@@ -6,7 +6,7 @@
 
 ## What exists today
 
-- `tarmac::data` namespace and self-contained C++20 public headers.
+- `tarmac::DataCore` namespace and self-contained C++20 public headers.
 - `models/RecordEnvelope.hpp`: optional, owning record envelope with caller-provided source and timestamp.
 - `writers/RecordWriter.hpp`: typed, synchronous `write`/`flush` contract; record types are checked at compile time.
 - `Error.hpp`: common data-operation diagnostic type.

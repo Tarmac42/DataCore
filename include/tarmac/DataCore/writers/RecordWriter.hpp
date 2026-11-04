@@ -3,7 +3,7 @@
  */
 #pragma once
 
-namespace tarmac::data {
+namespace tarmac::DataCore {
 /** @brief Consumer of one concrete record type; backend chosen by composition.
  * @tparam Record Caller-defined record value or RecordEnvelope specialization.
  * Calls are synchronous and non-reentrant; callers serialize access. The caller

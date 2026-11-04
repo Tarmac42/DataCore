@@ -4,7 +4,7 @@
 #pragma once
 #include <stdexcept>
 
-namespace tarmac::data {
+namespace tarmac::DataCore {
 /** @brief Recoverable data-operation failure carrying a diagnostic.
  * Owns its message; no shared state. Concrete adapters may derive more specific
  * errors. Allocation errors and user-record exceptions may propagate separately.

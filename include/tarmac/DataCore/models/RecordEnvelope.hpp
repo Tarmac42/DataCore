@@ -5,7 +5,7 @@
 #include <chrono>
 #include <string>
 
-namespace tarmac::data {
+namespace tarmac::DataCore {
 /** @brief Owning metadata and a statically typed payload.
  * @tparam Payload Application-defined owning value type.
  * Aggregate initialization and value semantics follow Payload. UTC observation
