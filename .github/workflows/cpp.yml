@@ -1,0 +1,27 @@
+name: C++ build and tests
+on:
+  push:
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  build:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-24.04, macos-14]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Configure
+        run: cmake -S . -B build -DCMAKE_BUILD_TYPE=Release -DBUILD_TESTING=ON
+      - name: Build
+        run: cmake --build build --parallel 2
+      - name: Test
+        run: ctest --test-dir build --output-on-failure
+      - name: Install and consume exported package
+        run: |
+          cmake --install build --prefix "$RUNNER_TEMP/datacore-install"
+          cmake -S tests/consumer -B build-consumer -DCMAKE_PREFIX_PATH="$RUNNER_TEMP/datacore-install"
+          cmake --build build-consumer --parallel 2
+          ctest --test-dir build-consumer --output-on-failure
