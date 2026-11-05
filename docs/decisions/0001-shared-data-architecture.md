@@ -86,6 +86,14 @@ committed C++ method signatures:
 
 - Identify the source and its distinct measurement channels through stable
   IDs and descriptive metadata.
+- **Driver cardinality is unrestricted:** a driver can expose zero, one, or
+  multiple measurement channels. A driver may represent an individual sensor,
+  a multi-sensor node, an instrument, or an aggregated remote feed. The engine
+  must not assume one driver instance per physical sensor.
+- Channel identity is logically distinct from the driver and its transport:
+  replacing an Arduino/RS-485 driver with a direct I2C driver should not
+  inherently change the channel's stable logical identity. Define the mapping
+  and persistence of identities in acquisition-client configuration.
 - Provide an explicit initialization/start/stop lifecycle and communicate
   connection status and failures.
 - Deliver typed observations with timestamps, provenance, units or unit
